@@ -5,3 +5,5 @@ public/dist
 
 yarn.lock
 package-json.lock
+
+.env*
