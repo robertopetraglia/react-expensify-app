@@ -7,7 +7,7 @@
         "transform-class-properties",
         "transform-object-rest-spread"
     ],
-    // "test": [
-    //     "jest"
-    // ]
+    "test": [
+        "jest"
+    ]
 }
