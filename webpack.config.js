@@ -14,7 +14,7 @@ module.exports = (env) => {
   const isProduction = env === "production";
   
   return {
-    entry: "./src/app.js",
+    entry: ["babel-polyfill", "./src/app.js"],
     output: {
       path: path.join(__dirname, "public", 'dist'),
       filename: "bundle.js",
@@ -37,6 +37,12 @@ module.exports = (env) => {
               }    
             },
             {
+              loader: 'resolve-url-loader',
+              options: {
+                sourceMap: true
+              } 
+            },
+            {
               loader: 'sass-loader',
               options: {
                 sourceMap: true
@@ -44,6 +50,17 @@ module.exports = (env) => {
             }
           ],
         },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'images/[name].[ext]',
+              }
+            },
+          ],
+        }
       ],
     },
     plugins: [
